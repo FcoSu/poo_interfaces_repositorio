@@ -1,6 +1,7 @@
 package org.fseco.generics;
 
 import org.fseco.poointerfaces.modelo.Cliente;
+import org.fseco.poointerfaces.modelo.ClientePremium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,12 +30,24 @@ public class EjemploGenericos {
        List<String> nombres = fromArrayToList(new String[]{"Pepe", "Lucy",
                "Fran", "Jonh"}, enterosArreglo);
        nombres.forEach(System.out::println);
+
+       List<ClientePremium> clientesPremiumList = fromArrayToList(new ClientePremium[
+               ]{new ClientePremium("Andrea" ,"Munoz")});
+
+
+
     }
 
 
 
 
     public static <T> List<T> fromArrayToList(T[] c){
+        return Arrays.asList(c);
+    }
+    public static <T extends Number> List<T> fromArrayToList(T[] c){
+        return Arrays.asList(c);
+    }
+    public static <T extends Cliente & Comparable<T>> List<T> fromArrayToList(T[] c){
         return Arrays.asList(c);
     }
     public static <T,G> List<T> fromArrayToList(T[] c, G[] g){
